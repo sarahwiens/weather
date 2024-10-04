@@ -4,35 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <header>
-      <form>
-        <input type="search" placeholder="Enter a city" required />
-        <input type="submit" value="Search" />
-      </form>
-    </header>
-    <main>
-      <h1>City Name</h1>
-      <div>
-        <p>
-          Day time, weather description <br />
-          Humidity: <strong>00%</strong> Wind: <strong>00km/h</strong>
-        </p>
-      </div>
-      <div>☀ 00°C</div>
-    </main>
-    <footer>
-      Code by
-      <a href="https://github.com/sarahwiens" target="_blank">Sarah Wiens</a>,
-      is
-      <a href="https://github.com/sarahwiens/weather" target="_blank"
-        >open-sourced on GitHub</a
-      >
-      and
-      <a href="https://sarahwiens-weatherapp.netlify.app/" target="_blank"
-        >hosted on Netlify</a
-      >.
-    </footer>
+    <div class="app-container">
+      <header>
+        <form class="search-city-form">
+          <input
+            type="search"
+            placeholder="Enter a city"
+            required
+            class="search-city-form-input"
+          />
+          <input type="submit" value="Search" class="search-city-form-button" />
+        </form>
+      </header>
+      <main>
+        <div class="current-weather-container">
+          <div class="current-weather-details">
+            <h1>City Name</h1>
+            <p>
+              Day time, weather description <br />
+              Humidity: <strong>00%</strong> Wind: <strong>00km/h</strong>
+            </p>
+          </div>
+          <div class="current-temperature-container">
+            <div>☀</div>
+            <div class="current-temperature">00</div>
+            <div class="current-temperature-unit">°C</div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        Code by
+        <a href="https://github.com/sarahwiens" target="_blank">Sarah Wiens</a>,
+        is
+        <a href="https://github.com/sarahwiens/weather" target="_blank"
+          >open-sourced on GitHub</a
+        >
+        and
+        <a href="https://sarahwiens-weatherapp.netlify.app/" target="_blank"
+          >hosted on Netlify</a
+        >.
+      </footer>
+    </div>
   </body>
 </html>
