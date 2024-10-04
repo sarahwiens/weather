@@ -73,6 +73,10 @@ p {
   justify-content: space-between;
 }
 
+.current-temperature-icon {
+  font-size: 75px;
+}
+
 .current-temperature {
   font-size: 90px;
 }
