@@ -15,12 +15,15 @@
   <body>
     <div class="app-container">
       <header>
-        <form class="search-city-form">
+        <form class="search-city-form" id="search-city-form">
           <input
             type="search"
             placeholder="Enter a city"
             required
             class="search-city-form-input"
+            id="search-city-form-input"
+            autocomplete="off"
+            ;
           />
           <input type="submit" value="Search" class="search-city-form-button" />
         </form>
@@ -28,7 +31,7 @@
       <main>
         <div class="current-weather-container">
           <div class="current-weather-details">
-            <h1>City Name</h1>
+            <h1 id="current-city">City Name</h1>
             <p>
               Day time, weather description <br />
               Humidity: <strong>00%</strong> Wind: <strong>00km/h</strong>
@@ -54,5 +57,6 @@
         >.
       </footer>
     </div>
+    <script src="src/script.js"></script>
   </body>
 </html>
