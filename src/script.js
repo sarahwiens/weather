@@ -90,3 +90,5 @@ function handleSearchCity(event) {
 let now = new Date();
 let searchCityFormElement = document.querySelector("#search-city-form");
 searchCityFormElement.addEventListener("submit", handleSearchCity);
+
+determineApiUrL("Paris");
