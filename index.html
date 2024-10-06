@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="app-container">
@@ -33,13 +34,17 @@
           <div class="current-weather-details">
             <h1 id="current-city">City Name</h1>
             <p>
-              Day time, weather description <br />
-              Humidity: <strong>00%</strong> Wind: <strong>00km/h</strong>
+              <span id="current-day">Day</span>
+              <span id="current-time">time</span>,
+              <span id="current-weather-description">weather description</span>
+              <br />
+              Humidity: <strong id="current-humidity">00%</strong> Wind:
+              <strong id="current-wind-speed">00km/h</strong>
             </p>
           </div>
           <div class="current-temperature-container">
-            <div class="current-temperature-icon">☀</div>
-            <div class="current-temperature">00</div>
+            <div class="current-weather-icon" id="current-weather-icon">☀</div>
+            <div class="current-temperature" id="current-temperature">00</div>
             <div class="current-temperature-unit">°C</div>
           </div>
         </div>
