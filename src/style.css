@@ -40,15 +40,15 @@ body {
 }
 main {
   padding: 0 10px;
-}
-
-.current-weather-container {
   border-style: solid none;
   border-width: 1px;
   border-color: #f6f5fa;
+}
+
+.current-weather-container {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 20px 0 0;
 }
 
 .current-weather-container strong {
@@ -82,8 +82,37 @@ p {
 }
 
 .current-temperature-unit {
-  font-size: 30px;
+  font-size: 40px;
   margin-top: 12px;
+}
+
+.forecast-weather-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 5px;
+}
+
+.forecast-weather-day-container {
+  width: 85px;
+}
+
+.forecast-weather-day {
+  font-size: 20px;
+  text-align: center;
+}
+
+.forecast-weather-icon {
+  font-size: 30px;
+  text-align: center;
+}
+
+.forecast-weather-temperature {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(39, 33, 66, 0.4);
+  font-weight: 500;
 }
 
 footer {
