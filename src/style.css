@@ -99,6 +99,7 @@ p {
 .forecast-weather-day {
   font-size: 20px;
   text-align: center;
+  color: rgba(39, 33, 66, 0.4);
 }
 
 .forecast-weather-icon {
@@ -111,7 +112,7 @@ p {
   justify-content: space-between;
   font-size: 18px;
   line-height: 1.5;
-  color: rgba(39, 33, 66, 0.4);
+  color: #f65282;
   font-weight: 500;
 }
 
