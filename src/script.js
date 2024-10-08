@@ -87,8 +87,34 @@ function handleSearchCity(event) {
   determineApiUrL(city);
 }
 
+function displayForecast() {
+  let days = ["Mon", "Tue", "Wed", "Thu,", "Fri"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+      <div class="forecast-weather-day-container">
+        <div class="forecast-weather-day">${day}</div>
+        <div class="forecast-weather-icon">☀</div>
+        <div class="forecast-weather-temperature">
+          <div class="forecast-weather-temperature-high">
+            <strong>26°C</strong>
+          </div>
+          <div class="forecast-weather-temperature-low">18°C</div>
+        </div>
+      </div>
+      `;
+  });
+
+  let forecastElement = document.querySelector("#forecast-weather-container");
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let now = new Date();
 let searchCityFormElement = document.querySelector("#search-city-form");
 searchCityFormElement.addEventListener("submit", handleSearchCity);
 
 determineApiUrL("Paris");
+displayForecast();
