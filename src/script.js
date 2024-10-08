@@ -88,7 +88,7 @@ function handleSearchCity(event) {
 }
 
 function displayForecast() {
-  let days = ["Mon", "Tue", "Wed", "Thu,", "Fri"];
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
   days.forEach(function (day) {

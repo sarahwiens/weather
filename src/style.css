@@ -110,10 +110,14 @@ p {
 .forecast-weather-temperature {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.5;
   color: #f65282;
   font-weight: 500;
+}
+
+.forecast-weather-temperature-low {
+  opacity: 85%;
 }
 
 footer {
