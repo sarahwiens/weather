@@ -103,8 +103,7 @@ p {
 }
 
 .forecast-weather-icon {
-  font-size: 30px;
-  text-align: center;
+  width: 90px;
 }
 
 .forecast-weather-temperature {
