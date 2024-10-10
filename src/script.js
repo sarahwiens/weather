@@ -62,15 +62,23 @@ function updateCurrentTemperature(response) {
   )}`;
 }
 
+function updateWeatherElements(response) {
+  updateCurrentCity(response);
+  updateCurrentDay(response);
+  updateCurrentTime(response);
+  updateCurrentWeatherDescription(response);
+  updateCurrentHumidity(response);
+  updateCurrentWindSpeed(response);
+  updateCurrentWeatherIcon(response);
+  updateCurrentTemperature(response);
+}
+
 function getCurrentWeatherDetails(apiURL) {
-  axios.get(apiURL).then(updateCurrentCity);
-  axios.get(apiURL).then(updateCurrentDay);
-  axios.get(apiURL).then(updateCurrentTime);
-  axios.get(apiURL).then(updateCurrentWeatherDescription);
-  axios.get(apiURL).then(updateCurrentHumidity);
-  axios.get(apiURL).then(updateCurrentWindSpeed);
-  axios.get(apiURL).then(updateCurrentWeatherIcon);
-  axios.get(apiURL).then(updateCurrentTemperature);
+  axios.get(apiURL).then(updateWeatherElements);
+}
+
+function getForecastWeatherDetails(forecastApiURL) {
+  axios.get(forecastApiURL).then(displayForecast);
 }
 
 function determineApiUrL(city) {
@@ -80,11 +88,19 @@ function determineApiUrL(city) {
   getCurrentWeatherDetails(apiURL);
 }
 
+function determineForecastApiUrl(city) {
+  let apiKey = "7f314bd46t448eb65o54002ab9dadc03";
+  let units = "metric";
+  let forecastApiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${key}&units=${units}`;
+  getForcastWeatherDetails(forecastApiURL);
+}
+
 function handleSearchCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-city-form-input");
   let city = searchInput.value.toLowerCase().trim();
   determineApiUrL(city);
+  determineForecastApiUrl(city);
 }
 
 function displayForecast() {
