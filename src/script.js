@@ -80,8 +80,6 @@ function formatForecastDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
-
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
@@ -119,24 +117,45 @@ function getForecastWeatherDetails(forecastApiUrl) {
   axios.get(forecastApiUrl).then(displayForecast);
 }
 
-function determineApiUrls(city) {
-  let apiKey = "7f314bd46t448eb65o54002ab9dadc03";
-  let units = "metric";
+function determineApiUrl(city, apiKey, units) {
   let currentApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
+  console.log(currentApiUrl);
   getCurrentWeatherDetails(currentApiUrl);
   let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
+  console.log(forecastApiUrl);
   getForecastWeatherDetails(forecastApiUrl);
+}
+
+function updateApiParameters() {
+  if (checkboxElement.checked) {
+    units = "imperial";
+  } else {
+    units = "metric";
+  }
+  console.log(units);
+
+  let searchInput = document.querySelector("#search-city-form-input");
+  let city = searchInput.value.toLowerCase().trim() || "Paris";
+
+  console.log(city);
+  let apiKey = "7f314bd46t448eb65o54002ab9dadc03";
+  console.log(apiKey);
+  determineApiUrl(city, apiKey, units);
 }
 
 function handleSearchCity(event) {
   event.preventDefault();
-  let searchInput = document.querySelector("#search-city-form-input");
-  let city = searchInput.value.toLowerCase().trim();
-  determineApiUrls(city);
+  updateApiParameters();
+}
+
+function handleUnitToggle(event) {
+  updateApiParameters();
+  updateUnits();
 }
 
 let now = new Date();
 let searchCityFormElement = document.querySelector("#search-city-form");
 searchCityFormElement.addEventListener("submit", handleSearchCity);
-
-determineApiUrls("Paris");
+let checkboxElement = document.getElementById("units");
+checkboxElement.addEventListener("change", handleUnitToggle);
+updateApiParameters();
