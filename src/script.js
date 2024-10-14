@@ -31,7 +31,11 @@ function updateCurrentWeatherDescription(response) {
   let currentWeatherDescriptionElement = document.querySelector(
     "#current-weather-description"
   );
-  currentWeatherDescriptionElement.innerHTML = `${response.data.condition.description}`;
+  currentWeatherDescriptionElement.innerHTML = `${response.data.condition.description
+    .charAt(0)
+    .toUpperCase()}${response.data.condition.description
+    .substring(1)
+    .toLowerCase()}`;
 }
 
 function updateCurrentHumidity(response) {
@@ -156,7 +160,6 @@ function updateApiParameters() {
   let city = searchInput.value.toLowerCase().trim() || "Paris";
   let apiKey = "7f314bd46t448eb65o54002ab9dadc03";
   determineApiUrl(city, apiKey, units);
-  updateUnits();
 }
 
 function handleSearchCity(event) {
@@ -166,7 +169,6 @@ function handleSearchCity(event) {
 
 function handleUnitToggle(event) {
   updateApiParameters();
-  updateUnits();
 }
 
 let now = new Date();
