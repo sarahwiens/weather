@@ -40,10 +40,15 @@ function updateCurrentHumidity(response) {
 }
 
 function updateCurrentWindSpeed(response) {
+  if (units === "metric") {
+    windSpeedUnitSymbol = `km/h`;
+  } else {
+    windSpeedUnitSymbol = `mph`;
+  }
   let currentWindSpeedElement = document.querySelector("#current-wind-speed");
   currentWindSpeedElement.innerHTML = `${Math.round(
     response.data.wind.speed
-  )} km/h`;
+  )} ${windSpeedUnitSymbol}`;
 }
 
 function updateCurrentWeatherIcon(response) {
@@ -60,6 +65,15 @@ function updateCurrentTemperature(response) {
   currentTemperatureElement.innerHTML = `${Math.round(
     response.data.temperature.current
   )}`;
+
+  let currentTemperatureUnitElement = document.querySelector(
+    "#current-temperature-unit"
+  );
+  if (units === "metric") {
+    currentTemperatureUnitElement.innerHTML = `°C`;
+  } else {
+    currentTemperatureUnitElement.innerHTML = `°F`;
+  }
 }
 
 function updateCurrentWeatherElements(response) {
@@ -80,6 +94,12 @@ function formatForecastDay(timestamp) {
 }
 
 function displayForecast(response) {
+  if (units === "metric") {
+    temperatureUnitSymbol = `°C`;
+  } else {
+    temperatureUnitSymbol = `°F`;
+  }
+
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
@@ -94,11 +114,13 @@ function displayForecast(response) {
         }" class="forecast-weather-icon"/></div>
         <div class="forecast-weather-temperature">
           <div class="forecast-weather-temperature-high">
-            <strong>${Math.round(day.temperature.maximum)}°C</strong>
+            <strong>${Math.round(
+              day.temperature.maximum
+            )}${temperatureUnitSymbol}</strong>
           </div>
           <div class="forecast-weather-temperature-low">${Math.round(
             day.temperature.minimum
-          )}°C</div>
+          )}${temperatureUnitSymbol}</div>
         </div>
       </div>
       `;
@@ -119,10 +141,8 @@ function getForecastWeatherDetails(forecastApiUrl) {
 
 function determineApiUrl(city, apiKey, units) {
   let currentApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-  console.log(currentApiUrl);
   getCurrentWeatherDetails(currentApiUrl);
   let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
-  console.log(forecastApiUrl);
   getForecastWeatherDetails(forecastApiUrl);
 }
 
@@ -132,15 +152,11 @@ function updateApiParameters() {
   } else {
     units = "metric";
   }
-  console.log(units);
-
   let searchInput = document.querySelector("#search-city-form-input");
   let city = searchInput.value.toLowerCase().trim() || "Paris";
-
-  console.log(city);
   let apiKey = "7f314bd46t448eb65o54002ab9dadc03";
-  console.log(apiKey);
   determineApiUrl(city, apiKey, units);
+  updateUnits();
 }
 
 function handleSearchCity(event) {
